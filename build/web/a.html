@@ -1,0 +1,152 @@
+<%@page import="Universal_connection.Database_connection"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>User Details Book Page</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-size: 18px;
+            margin: 0;
+            text-align: center;
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+        }
+        .user-icon {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px;
+            text-align: left;
+            width: 200px;
+        }
+        .card img {
+            height: 20rem;
+            border-radius: 10px;
+        }
+        .card h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .card p {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .card a {
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>User Details Book Page</h1>
+        <div>
+            <a href="o.jsp"><img src="img/order.png" alt="Cart" /></a>
+            Cart: <%= (Integer) session.getAttribute("count") %>
+            <div class="dropdown">
+                <button class="dropbtn">Categories</button>
+                <div class="dropdown-content">
+                    <a href="?cat=JAVA">JAVA</a>
+                    <a href="?cat=PYTHON">PYTHON</a>
+                    <a href="?cat=C++">C++</a>
+                    <a href="?cat=MATHS">MATHS</a>
+                </div>
+            </div>
+            <% if (st != null) { %>
+                <span>Welcome, <%= st %>!</span>
+                <img src="img/user_icon.png" alt="User Icon" class="user-icon" />
+            <% } else { 
+                response.sendRedirect("login.jsp");
+            } %>
+        </div>
+    </div>
+
+    <div class="card-container">
+        <%
+            try {
+                Connection con = Database_connection.getconnection();
+                Statement st1 = con.createStatement();
+                ResultSet rs = st1.executeQuery("SELECT * FROM book");
+                while (rs.next()) {
+        %>
+        <div class="card">
+            <img src="book/<%= rs.getString("image_id") %>" alt="Book Image" />
+            <h2><%= rs.getString("Book_Name") %></h2>
+            <p>Author: <%= rs.getString("Auther") %></p>
+            <p>Quantity: <%= rs.getString("Quantity") %></p>
+            <p>Price: $<%= rs.getString("Price") %></p>
+            <a href="ad.jsp?id=<%= rs.getString(1) %>">Buy Now</a>
+        </div>
+        <%
+                }
+            } catch (Exception e) {
+                out.print(e.getMessage());
+            }
+        %>
+    </div>
+
+    <br>
+    <span>Back to your home <a href="userHome.jsp" style="color: #007bff;">📩 Click here</a></span>
+</body>
+</html>

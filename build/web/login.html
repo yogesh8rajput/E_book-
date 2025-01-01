@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>User login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <style>
+            body{
+                background: url("img/login.jpg");
+                background-repeat: no-repeat;
+
+                background-size: cover;
+                text-align: center;
+                margin-left: 550px;
+
+            }
+
+            form {
+                height: 400px;
+                width: 400px;
+
+            }
+            a{
+                text-decoration: none;
+                color: black;
+                font-size: 30px;
+            }
+
+            label{
+                color: black;
+                font-size: 20px;
+            }
+            input{
+                font-size: 20px;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <div id="ff">
+            <form action="userlogin.jsp"method="post">
+                <h1>Login 📩📩📩 form</h1>
+                <label>Enter your UserName </label><br><br>
+                <input type="text" name="na" placeholder="Enter your UserName"><br>
+                <label>Enter your Password </label><br><br>
+                <input type="password" name="pw" placeholder="Enter your Password"><br><br>
+                <input type="submit" value="ok">
+                <input type="reset" value="Reset"><br><br>
+                <a href="userlogout">Log out</a>
+                <a href="index.html"><img src="./img/icon.png" height="40px"width="80px;" alt="alt"/></a>
+
+                </form>
+
+        </div>
+    </body>
+</html>
