@@ -86,8 +86,8 @@ public class forget extends HttpServlet {
             throws ServletException, IOException {
             PrintWriter pt=response.getWriter();
             String email=request.getParameter("gmail");
-            final String username="yogeshmerajput5895@gmail.com";
-            final String password="jpkp cdji mubg pogw";
+            final String username="Enter your mail";
+            final String password="Enter your smtp password";
             Properties props=new Properties();
             props.setProperty("mail.smtp.auth", "true");
             props.setProperty("mail.smtp.starttls.enable", "true");
