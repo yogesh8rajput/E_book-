@@ -58,11 +58,15 @@
             .h1{
                 color: green;
             }
+            .logo img{
+                height:  3rem;
+                width: 3rem;
+            }
         </style>
     </head>
     
         <div id="navbarr">
-            <div class="logo">E-BOOK</div>
+            <div class="logo"><img src="img/basket.png" alt="alt" width="50" height="100"/>E-BOOK</div>
             <div class="navv">
                 <a href="userHome.jsp">UserHome</a>
                 <a href="userBookDeatails.jsp">Book Details</a>
@@ -73,10 +77,10 @@
             </div>
         </div>
      <script>
-    function autoRefresh() {
-        window.location = window.location.href;
-    }
-    setInterval('autoRefresh()', 5000);
+//    function autoRefresh() {
+//        window.location = window.location.href;
+//    }
+//    setInterval('autoRefresh()', 50000);
 </script>
     
 </html>

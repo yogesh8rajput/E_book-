@@ -239,7 +239,7 @@
                 </div>
                 <button type="submit">Sign Up</button>
                 <div class="footer">
-                    <p>Already have an account? <a href="login.jsp" onclick="flipForms()">Login</a></p>
+                    <p>Already have an account? <a href="loginSignup.jsp" onclick="flipForms()">Login</a></p>
                 </div>
 
             </form> 

@@ -89,27 +89,19 @@
     </head>
     <body>
         <div id="navbar">
-            <div class="logo">E-BOOK</div>
+            <div class="logo"> <img src="img/basket.png" alt="alt" width="50"/>E-BOOK</div>
              <!--<h1>Welcome the E-Book Library</h1>-->
             <div class="nav">
                 <a href="index.html">Home</a><br><br>
                 <a href="loginSignup.jsp">Login</a><br><br>
-                <a href="#">About</a><br><br>
-                <a href="#">Contact us </a><br><br>
+               
+                <a href="contact.jsp">Contact us </a><br><br>
 
             </div>
 
         </div>
         
-<!--        <div id="homemain">
-            <div id="home">
-                <h1>This is  the book web</h1>              
-            </div>
-            <div id="home2">
-                <img src="work/undraw_booking_re_gw4j.svg" alt="alt"/>            
-            </div>
-        </div>
-    </div>-->
+
 </body>
 </html>
 

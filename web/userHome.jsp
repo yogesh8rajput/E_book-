@@ -44,6 +44,9 @@
            
             flex: 1;
         }
+        .left{
+            padding: 2rem
+        }
         .lr{
             display: flex;
         }
@@ -118,11 +121,7 @@
 
         %>
 
-             <script>
-    function autoRefresh() {
-        window.location = window.location.href;
-    }
-    setInterval('autoRefresh()', 5000);
+            
 </script>
     </body>
 </html>

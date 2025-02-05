@@ -47,7 +47,7 @@
                 } else {
 //         RequestDispatcher rd=request.getRequestDispatcher("login.html");
 //        rd.include(request, response);
-                    response.sendRedirect("login.html");
+                    response.sendRedirect("login.jsp");
 
                 }
             } catch (Exception e) {

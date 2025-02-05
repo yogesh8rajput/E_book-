@@ -5,29 +5,22 @@
 package User;
 
 import Universal_connection.Database_connection;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
-import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 /**
  *
  * @author yoges
  */
-@MultipartConfig
-@WebServlet(name = "updatepi", urlPatterns = {"/updatepi"})
-public class updatepi extends HttpServlet {
+@WebServlet(name = "contact", urlPatterns = {"/contact"})
+public class contact extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,10 +39,10 @@ public class updatepi extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet updatepi</title>");            
+            out.println("<title>Servlet contact</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet updatepi at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet contact at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -81,35 +74,44 @@ public class updatepi extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       PrintWriter pt = response.getWriter();
-        response.setContentType("text/html");
-        String id = request.getParameter("id");
-         Part file = request.getPart("pic");
-        String filename = file.getSubmittedFileName();
+       String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String message = request.getParameter("msg");
+
+       
+        
         try {
-            Connection con=Database_connection.getconnection();
+           Connection con=Database_connection.getconnection();
+            
+
+           PreparedStatement pstmt = null;
+        
+            // Step 4: Create SQL query to insert data into hellocontact table
+            String sql = "INSERT INTO Contactus (name, email, message) VALUES (?, ?, ?)";
+            
+            // Step 5: Create PreparedStatement
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, name);
+            pstmt.setString(2, email);
+            pstmt.setString(3, message);
+            
            
-            String drive_path = "E:/Online_Book/web/img/" + filename;
-             FileOutputStream fos = new FileOutputStream(drive_path);
-            InputStream is = file.getInputStream();
-            byte[] imageData = new byte[is.available()];
-            is.read(imageData);
-            fos.write(imageData);
-             PreparedStatement pt1=con.prepareStatement("update user set image_data=? where userId=? ");
-           pt1.setString(1, filename);
-           pt1.setString(2, id);
-            int i = pt1.executeUpdate();
-             if (i>0) {
-           String path = getServletContext().getRealPath("") + "img";
-            file.write(path + File.separator + filename);
-//                JOptionPane.showMessageDialog(null, "Update Successfully");
-              response.sendRedirect("profile.jsp");
+            int result = pstmt.executeUpdate();
+            
+             if (result > 0) {
+//                  response.sendRedirect("");
+ response.getWriter().println("Thankyou .");
+         
+            } else {
+                response.getWriter().println("Failed to submit the form. Please try again.");
             }
         } catch (Exception e) {
-            pt.print(e.getMessage());
+            e.printStackTrace();
+            response.getWriter().println("Error: " + e.getMessage());
+        } 
         }
-        
-    }
+    
+
 
     /**
      * Returns a short description of the servlet.
