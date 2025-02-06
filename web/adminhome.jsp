@@ -20,7 +20,7 @@
                 background-repeat: no-repeat;
                 background-size: cover;
                 text-decoration: none;*/
-background-color: #00BFA6;
+                background-color: #00BFA6;
                 text-align: center;
 
                 color: black;

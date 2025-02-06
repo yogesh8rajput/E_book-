@@ -99,6 +99,10 @@
             .footer a:hover {
                 text-decoration: underline;
             }
+            .p{
+                color: red;
+                background: green;
+            }
 
         </style>
 
@@ -107,7 +111,7 @@
 <!--        ----admin----->
       
          <div class="container">
-            <form class="login-form" action="adminlogin.jsp">
+             <form class="login-form" action="adminlogin.jsp" method="post">
                 <h2>Admin</h2>
                 <div class="input-group">
                     <label >Username</label>
@@ -147,7 +151,7 @@
 <a href="adminout"><img src="img/logout.jpg" alt="alt"/></a>-->
 
 <%
-
+ if ("POST".equalsIgnoreCase(request.getMethod())) {
     try {
 
         Connection con=Database_connection.getconnection();
@@ -158,18 +162,19 @@
         pt.setString(2, pass);
         ResultSet rs = pt.executeQuery();
         if (rs.isBeforeFirst()) {
+         session = request.getSession(true);
             session.setAttribute("user", uname);
 //            RequestDispatcher rd = request.getRequestDispatcher("adminhome.jsp");
-response.sendRedirect("adminhome.jsp");
+             response.sendRedirect("adminhome.jsp");
 //            rd.forward(request, response);
 
         } else {
 
-            // out.print("wrong Enter name and password");
+             out.print("<p  style=\"color:red;\">Invalid Username and password</p>");
         }
     } catch (Exception e) {
         out.print(e.getMessage());
-    }
+    }}
 %>
 
 

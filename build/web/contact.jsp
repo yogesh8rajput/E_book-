@@ -73,7 +73,7 @@
             border: none;
             cursor: pointer;
             font-size: 18px;
-            transition: background-color 0.3s ease;
+            /*ztransition: background-color 0.3s ease;*/
         }
 
         /* Submit button hover effect */

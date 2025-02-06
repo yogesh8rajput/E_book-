@@ -71,7 +71,7 @@
                 <a href="userHome.jsp">UserHome</a>
                 <a href="userBookDeatails.jsp">Book Details</a>
                 <a href="profile.jsp">Profile</a>
-                <a href="index.html">Home</a>
+                <!--<a href="index.html">Home</a>-->
                 <a href="userlogout">Log out</a>
                 <!--<a href="index.jsp"><img src="./img/ico.png" height="40" width="80" alt="Home Icon"></a>-->
             </div>
