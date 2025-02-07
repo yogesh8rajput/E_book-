@@ -10,13 +10,17 @@
     <title>Book Management</title>
        <span> <%@include file="adminnavbar.jsp"%></span>
     <style>
-        body {
-            background: url("img/table2.jpg") no-repeat center center fixed;
-            background-size: cover;
-            text-align: center;
-            font-size: 20px;
-            color: white;
-        }
+        body{
+                background: url("work/adminhome.svg") ;
+                background-repeat: no-repeat;
+                background-size: cover;
+                text-decoration: none;
+                background-color: #00BFA6;
+                text-align: center;
+
+                color: black;
+
+            }
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -55,8 +59,7 @@
         %> 
         <!--<h1>Welcome, <%= st%>!</h1>-->
         
-    %>
-     
+
     
     
     

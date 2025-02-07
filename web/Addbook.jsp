@@ -12,15 +12,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Book Page</title>
     <style>
-        body {
-            background: url("img/add.jpg") no-repeat center center fixed;
-            background-size: cover;
-            font-family: Arial, sans-serif;
-            color: #fff;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
+        body{
+                background: url("work/adminhome.svg");
+                /*background-repeat: no-repeat;*/
+                /*background-size: 100px;*/
+                text-decoration: none;
+                background-color: #00BFA6;
+                text-align: center;
+
+                color: black;
+
+            }
+            a{
+                text-decoration: none;
+                color: orange;
+
+            }
+            span{
+                padding: 0;
+                margin: 0;
+            }
+            p{
+                font-size: 50px;
+            }
+
 
         h1 {
             margin: 20px 0;
@@ -73,7 +88,9 @@
             display: inline-block;
             transition: color 0.3s;
         }
-
+        p{
+            color: black;
+        }
         a:hover {
             color: #fff;
         }
@@ -81,16 +98,18 @@
 </head>
 <body>
     <span> <%@include file="adminnavbar.jsp"%></span>
-   <%
+    <p>
+         <%
         String st = (String) session.getAttribute("user");
 
             out.print("Welcome  " + st);
             if (st != null) {
 
         %> 
+    </p>
         <!--<h1>Welcome, <%= st%>!</h1>-->
         
-    %>
+  
 
     <form action="addbook" method="post" enctype="multipart/form-data">
        
@@ -117,18 +136,18 @@
         <span>Back to your home <a href="adminhome.jsp">Click here</a></span>
     </form>
     
-    }
+    
     
     <%
         }else {
                     response.sendRedirect("adminlogin.jsp");
                 }
             %>
-         <script>
+<!--         <script>
     function autoRefresh() {
         window.location = window.location.href;
     }
-    setInterval('autoRefresh()', 50000);
-</script>
+    setInterval('autoRefresh()', 5000);
+</script>-->
 </body>
 </html>
